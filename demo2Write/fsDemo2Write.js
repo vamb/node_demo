@@ -7,5 +7,9 @@ const fs = require('fs')
  * 4. callback: 表示文件的回调函数
  */
 fs.writeFile('./test2.txt', 'hello world write', 'utf8', function(err) {
-  console.log(err)
+  if(err) {
+    return console.log('文件写入失败', err)
+  }else{
+    console.log('文件写入成功')
+  }
 })
