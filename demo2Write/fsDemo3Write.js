@@ -1,11 +1,4 @@
 const fs = require('fs')
-const path = require('path')
-
-/**
- * path.join 会将路劲拼接起来
- * 输出 => \a\b\c
- */
-console.log(path.join('/a','/b', '../', '/c'))
 
 /**
  * __dirname: 表示当前文件所在的路径

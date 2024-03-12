@@ -1,0 +1,60 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>target_html</title>
+  <style>
+    main>ul li:nth-child(-n+3):not(:nth-child(2)):not(:first-child) {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <ul>
+      <li>li 1</li>
+      <li>li 2</li>
+      <li>li 3</li>
+      <li>li 4</li>
+    </ul>
+    <article>
+      <h1>h1 text</h1>
+      <h2 title="houdunren">h2 text</h2>
+      <aside>
+        <h2 title="houdunren com" id>aside h2</h2>
+      </aside>
+      <h2>h2 text2</h2>
+    </article>
+  </main>
+<script>
+  var name = 'test1'
+  console.log(name)
+  if(true){
+    var name = 'test2'
+    console.log(name)
+  }
+
+  let age = 30
+  console.log(age)
+  if(true){
+    let age = 27
+    console.log(age)
+  }
+
+  var code = 'code1'
+  console.log(code)
+  if(true){
+    let code = 'code2'
+    console.log(code)
+  }
+  console.log(code)
+
+  for(var j=0;j<5;j++){
+    console.log(j)
+  }
+
+  for(var i=0;i<5;i++){
+    setTimeout(()=>console.log(i), 0)
+  }
+</script>
+</body>
+</html>
