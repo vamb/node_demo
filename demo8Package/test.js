@@ -1,4 +1,4 @@
-const { dateFormat, htmlEscape } = require('./itheima-tools')
+const { dateFormat, htmlEscape, unEscapeHTML } = require('./itheima-tools')
 
 // 格式化时间
 const dateStr = dateFormat(new Date())
@@ -8,3 +8,6 @@ console.log('dateStr', dateStr)
 const htmlStr = '<h1 title="abc">这是H1标签<span>124&nbsp;</span></h1>'
 const htmlRest = htmlEscape(htmlStr)
 console.log('htmlRest', htmlRest)
+
+const decodeHtml = unEscapeHTML(htmlRest)
+console.log('decodeHtml', decodeHtml)
