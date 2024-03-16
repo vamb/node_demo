@@ -16,6 +16,23 @@ function padZero(n) {
   return n > 9? n: '0' + n
 }
 
+// 定义转移 HTML 字符的函数
+function htmlEscape(htmlStr) {
+  return htmlStr.replace(/<|>|"|&|'/g, (match) => {
+    switch (match) {
+      case '<':
+        return '&lt;'
+      case '>':
+        return '&gt;'
+      case '"':
+      case "'":
+        return '&quot;'
+      case '&':
+        return '&amp;'
+    }
+  })
+}
+
 module.exports = {
-  dateFormat
+  dateFormat, htmlEscape
 }
