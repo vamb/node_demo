@@ -17,6 +17,7 @@ app.post('/user', (req, res)=>{
   res.send('请求成功')
 })
 
+app.use('/static', express.static('./test')) // 可以加前缀
 app.use(express.static('public'))
 
 // 调用 listen 方法并指定端口号来启动服务
