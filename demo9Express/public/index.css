@@ -1,0 +1,5 @@
+
+    main>ul li:nth-child(-n+3):not(:nth-child(2)):not(:first-child) {
+      color: red;
+    }
+  

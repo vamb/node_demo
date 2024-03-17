@@ -4,3 +4,8 @@
 #### express 的本质，就是一个 npm 上的第三方包，提供了快速创建 Web 服务器的便捷方式
 
 ### 使用 Express 可以方便的快速的创建 web 网站 或者 API 接口服务器
+=================================== <br/>
+### 可以创建一个静态资源服务器，可以将 public 目录下的 图片，css 文件，JavaScript 文件对外开放
+```js
+app.use(express.static('public'))
+```
