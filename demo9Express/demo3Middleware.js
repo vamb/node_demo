@@ -17,6 +17,16 @@ const mw2 = function (req, res, next) {
   next()
 }
 
+const mw3 = function (req, res, next) {
+  console.log('this is middleware 3')
+  next()
+}
+
+const mw4 = function (req, res, next) {
+  console.log('this is middleware 4')
+  next()
+}
+
 // 将 mw 注册为全局生效的中间件
 app.use(mw)
 /**
@@ -33,6 +43,14 @@ app.use('/api', useRouter)
 // 可以指定这个 api 调用某一个特定的 中间件
 app.get('/api2/user2', mw2, (req, res)=> {
   res.send('pppp')
+})
+
+// 下面是多个局部 middleware 在同一个 api 中被使用的写法
+app.get('/app2/md3', mw2, mw3, (req, res) => {
+  res.send('this is md3 api response')
+})
+app.get('/app2/md4', [mw4, mw3], (req, res) => {
+  res.send('this is md4 api response')
 })
 
 app.listen('8358', () => {
