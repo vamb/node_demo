@@ -10,7 +10,6 @@ router.get('/user', (req, res)=>{
   res.send({name: 'testName', age: '25', gender: 'male'})
 })
 
-
 router.post('/user', (req, res)=>{
   console.log('query', req?.query)
   res.send('请求成功')
