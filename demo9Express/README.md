@@ -35,4 +35,21 @@ app.use(express.static('public'))
 ####!important 错误级别的中间件必须注册在所有 api 请求之后，否则会报错
    
 ###4. express 内置的中间件
+
+```js
+express.static('public') // 快速托管静态资源的内置中间件，例如：HTML 文件、图片、CSS 样式（无兼容性）
+express.json() // 解析 JSON 格式的请求体数据（有兼容性，仅在 4.16.0+ 版本中可以使用）
+express.urlencoded() // 解析 URL-encoded 格式的请求体数据（有兼容性，仅在 4.16.0+ 版本中可以使用）
+```
+```js
+/**
+ * 这些中间件一定要在所有 api 请求定义之前定义好，不然不会被执行
+ */
+
+// 配置解析 application/json 格式数据的内置中间件
+app.use(express.json())
+
+// 配置解析 application/x-www-form-urlencoded 格式数据的内置中间件
+app.use(express.urlencoded({ extended: false }))
+```
 ###5. 第三方的中间件
