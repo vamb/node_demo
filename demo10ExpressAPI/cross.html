@@ -1,0 +1,64 @@
+<html>
+<body>
+<button onclick="getClick()">Get</button>
+<button onclick="postClick()">Post</button>
+<button onclick="deleteClick()">Delete</button>
+<script>
+  function getClick() {
+    let xhr = new XMLHttpRequest()
+    xhr.onreadystatechange = () =>{
+      if(xhr.readyState === 4) {
+        let allHeaders = xhr.getAllResponseHeaders();
+        if(xhr.status >= 200 && xhr.status < 300 || xhr.status === 304){
+          console.log('allHeaders', allHeaders)
+          // alert(xhr.responseText)
+          console.log(xhr.responseText)
+        }else {
+          // alert('request was unsuccessful" ' + xhr.status)
+          console.log(`request was unsuccessful ${xhr.status}`)
+        }
+      }
+    }
+    xhr.open('get', 'http://127.0.0.1:8358/api/get', true)
+    xhr.send()
+  }
+
+  function postClick() {
+    let xhr = new XMLHttpRequest()
+    xhr.onreadystatechange = () =>{
+      if(xhr.readyState === 4) {
+        let allHeaders = xhr.getAllResponseHeaders();
+        if(xhr.status >= 200 && xhr.status < 300 || xhr.status === 304){
+          console.log('allHeaders', allHeaders)
+          // alert(xhr.responseText)
+          console.log(xhr.responseText)
+        }else {
+          // alert('request was unsuccessful" ' + xhr.status)
+          console.log(`request was unsuccessful ${xhr.status}`)
+        }
+      }
+    }
+    xhr.open('post', 'http://127.0.0.1:8358/api/post', true)
+    xhr.send()
+  }
+  function deleteClick() {
+    let xhr = new XMLHttpRequest()
+    xhr.onreadystatechange = () =>{
+      if(xhr.readyState === 4) {
+        let allHeaders = xhr.getAllResponseHeaders();
+        if(xhr.status >= 200 && xhr.status < 300 || xhr.status === 304){
+          console.log('allHeaders', allHeaders)
+          // alert(xhr.responseText)
+          console.log(xhr.responseText)
+        }else {
+          // alert('request was unsuccessful" ' + xhr.status)
+          console.log(`request was unsuccessful ${xhr.status}`)
+        }
+      }
+    }
+    xhr.open('delete', 'http://127.0.0.1:8358/api/delete', true)
+    xhr.send()
+  }
+</script>
+</body>
+</html>
