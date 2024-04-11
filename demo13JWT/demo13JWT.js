@@ -22,6 +22,28 @@ const secretKey = 'this is secretKey'
 // .unless({ path: [/^\/api\//] }) 用来指定哪些接口不需要访问权限
 app.use(expressJWT({ secret: secretKey, algorithms: ["HS256"] }).unless({ path: [/^\/api\//] }))
 
+/**
+ * 手写一个中间件，来 handle token 解析出错的问题
+ */
+app.use((err, req, res, next)=>{
+  console.log('err', JSON.stringify(err))
+  if(err) {
+    if(err?.['name'] === 'UnauthorizedError') {
+      res?.send({
+        status: 400,
+        message: '无效的token'
+      })
+      return
+    }else{
+      res?.send({
+        status: 500,
+        message: err?.['name']
+      })
+      return
+    }
+  }
+  next()
+})
 
 // 登录接口
 app.post('/api/login', (req, res) => {
@@ -41,9 +63,19 @@ app.post('/api/login', (req, res) => {
        * 30h => 30小时
        * 7d => 7天
        */
-      token: jwt.sign({ username: userinfo?.username }, secretKey, { expiresIn: '30s' })
+      token: jwt.sign({ username: userinfo?.username }, secretKey, { expiresIn: '30h' })
     })
   }
+})
+
+// 这是一个有权限的 API 接口
+app.get('/admin/getInfo', (req, res)=>{
+  // console.log('req', req)
+  res.send({
+    status: 200,
+    message: '获取用户信息成功！',
+    data: req.auth, // 要发送给客户端的用户信息
+  })
 })
 
 app.listen('8359', ()=>{
